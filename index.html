@@ -680,6 +680,9 @@ function tickCountdown(){
   if(diff <= 0){
     $('countLabel').textContent = "🎉 It's 19.10.2026 — Happy Birthday Thangammmm! 🎉";
     ['d','h','m','s'].forEach(k=>$('cd-'+k).textContent='00');
+
+    // Hide the countdown section completely when finished
+    $('countLabel').parentElement.classList.add('hidden');
     return;
   }
   const d = Math.floor(diff/86400000);
