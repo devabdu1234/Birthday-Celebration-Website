@@ -672,6 +672,8 @@ function tickCountdown(){
     } else {
       // Unlock!
       lockScreen.classList.add('hide');
+      // Also trigger the main loader to finish immediately if locked screen just disappeared
+      finishLoader();
     }
   }
 
