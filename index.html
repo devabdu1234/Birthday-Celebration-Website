@@ -170,14 +170,6 @@ tailwind.config = {
 </head>
 <body class="grain">
 
-<!-- LOCK SCREEN -->
-<div id="lockScreen" class="fixed inset-0 z-[200] bg-night flex flex-col items-center justify-center text-center px-6 transition-opacity duration-1000" style="background:#0f0714;">
-  <div class="glow-pink font-script text-6xl md:text-8xl gold-text mb-6">Coming Soon...</div>
-  <p class="text-white/60 tracking-[0.3em] uppercase text-sm mb-8">Waiting for the magic moment</p>
-  <div id="lockClock" class="font-serif text-5xl md:text-7xl font-extrabold text-white mb-4">00:00:00</div>
-  <p class="text-gold/60 font-light italic">Midnight Saudi Arabia Time • 19.10.2026</p>
-</div>
-
 <!-- LOADER -->
 <div id="loader">
   <div class="loader-heart">💖</div>
@@ -657,25 +649,6 @@ function startHearts(){
 function tickCountdown(){
   const now = new Date();
   const diff = CONFIG.birthday - now;
-
-  // Lock Screen Logic
-  const lockScreen = $('lockScreen');
-  if(lockScreen){
-    if(diff > 0){
-      // Still locked
-      const saudiTime = new Intl.DateTimeFormat('en-GB', {
-        timeZone: 'Asia/Riyadh',
-        hour: '2-digit', minute: '2-digit', second: '2-digit',
-        hour12: false
-      }).format(now);
-      $('lockClock').textContent = saudiTime;
-    } else {
-      // Unlock!
-      lockScreen.classList.add('hide');
-      // Also trigger the main loader to finish immediately if locked screen just disappeared
-      finishLoader();
-    }
-  }
 
   if(diff <= 0){
     $('countLabel').textContent = "🎉 It's 19.10.2026 — Happy Birthday Thangammmm! 🎉";
